@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import { Switch, Route } from 'react-router-dom'
+import DashboardContainer from './Containers/DashboardContainer';
+import MainPageContainer from './Containers/MainPageContainer';
+import Page404 from './Components/Page404';
+import BusinessNewsContainer from './Containers/BusinessNewsContainer';
+import TechNewsContainer from './Containers/TechNewsContainer'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Switch>
+          <Route exact path='/' component={MainPageContainer} /> 
+          <Route exact path='/dashboard' component={DashboardContainer} />
+          <Route exact path='/news/business' component={BusinessNewsContainer} />
+          <Route exact path='/news/tech' component={TechNewsContainer} />
+          <Route path='*' component={Page404} />
+      </Switch>
   );
 }
 
